@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\KategoriaController;
+use App\Http\Controllers\ReceptController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +18,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/receptek',[ReceptController::class, 'index']);
+Route::get('/receptByCategory',[ReceptController::class, 'filterByCategory']);
+Route::post('/recept',[ReceptController::class, 'createRecept']);
+Route::delete('/destroy/{id}',[ReceptController::class, 'destroy']);
+
+Route::get('kategoriak',[KategoriaController::class, 'index']);
